@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>LaTeX Builder User Manual</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LaTeX Builder User Manual</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#latex-builder-user-manual"
+id="toc-latex-builder-user-manual">LaTeX Builder User Manual</a>
+<ul>
+<li><a href="#what-latex-builder-is" id="toc-what-latex-builder-is">1.
+What LaTeX Builder is</a></li>
+<li><a href="#requirements-and-installation"
+id="toc-requirements-and-installation">2. Requirements and
+installation</a></li>
+<li><a href="#opening-the-editor-and-the-two-most-useful-keys"
+id="toc-opening-the-editor-and-the-two-most-useful-keys">3. Opening the
+editor and the two most useful keys</a></li>
+<li><a href="#the-editor-window" id="toc-the-editor-window">4. The
+editor window</a></li>
+<li><a href="#inserting-latex-quickly"
+id="toc-inserting-latex-quickly">5. Inserting LaTeX quickly</a></li>
+<li><a href="#reading-and-navigating" id="toc-reading-and-navigating">6.
+Reading and navigating</a></li>
+<li><a href="#the-view-menu" id="toc-the-view-menu">7. The View
+menu</a></li>
+<li><a href="#latex-packages-list-and-manager"
+id="toc-latex-packages-list-and-manager">8. LaTeX packages: list and
+manager</a></li>
+<li><a href="#projects-several-files-one-document"
+id="toc-projects-several-files-one-document">9. Projects: several files,
+one document</a></li>
+<li><a href="#importing-a-project-made-in-another-editor"
+id="toc-importing-a-project-made-in-another-editor">10. Importing a
+project made in another editor</a></li>
+<li><a href="#indian-languages-and-fonts"
+id="toc-indian-languages-and-fonts">11. Indian languages and
+fonts</a></li>
+<li><a href="#building" id="toc-building">12. Building</a></li>
+<li><a href="#word-and-other-formats-through-pandoc"
+id="toc-word-and-other-formats-through-pandoc">13. Word and other
+formats through Pandoc</a></li>
+<li><a href="#crash-recovery" id="toc-crash-recovery">14. Crash
+recovery</a></li>
+<li><a href="#settings" id="toc-settings">15. Settings</a></li>
+<li><a href="#customizing-keyboard-shortcuts"
+id="toc-customizing-keyboard-shortcuts">16. Customizing keyboard
+shortcuts</a></li>
+<li><a href="#logs-and-getting-help" id="toc-logs-and-getting-help">17.
+Logs and getting help</a></li>
+<li><a href="#troubleshooting" id="toc-troubleshooting">18.
+Troubleshooting</a></li>
+<li><a href="#limits-of-this-version"
+id="toc-limits-of-this-version">19. Limits of this version</a></li>
+<li><a href="#keyboard-shortcut-reference"
+id="toc-keyboard-shortcut-reference">20. Keyboard shortcut
+reference</a></li>
+<li><a href="#quick-start-card" id="toc-quick-start-card">21. Quick
+start card</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="latex-builder-user-manual">LaTeX Builder User Manual</h1>
+<p>Version 1.6.0. The same program is available as an NVDA add-on and as
+a stand-alone Windows program. Where the two differ, this manual says
+so.</p>
+<h2 id="what-latex-builder-is">1. What LaTeX Builder is</h2>
+<p>LaTeX Builder is an accessible place to read, write, navigate and
+build LaTeX documents. It gives you:</p>
+<ul>
+<li>An editor window that screen readers read like any normal edit
+field, with menus for everything.</li>
+<li>Quick insert commands for headings, bold, italic, alignment, lists,
+poems, footnotes, endnotes, headers and footers, tables, pictures, links
+and mathematics.</li>
+<li>A list and manager of LaTeX packages.</li>
+<li>Navigation by headings, footnotes and environments.</li>
+<li>Projects that join several .tex files into one document, and an
+importer for projects made in other editors.</li>
+<li>A builder that runs MiKTeX to make PDF, and Pandoc to make Word,
+OpenDocument, HTML, EPUB, RTF, Markdown and plain text.</li>
+<li>English and the major Indian languages, with a chooser for every
+installed font.</li>
+<li>Customizable keyboard shortcuts, crash recovery, logs, and a
+built-in manual.</li>
+</ul>
+<p>LaTeX Builder does not replace MiKTeX or Pandoc. It writes LaTeX for
+you, runs those programs and reports the results in an accessible
+way.</p>
+<h2 id="requirements-and-installation">2. Requirements and
+installation</h2>
+<h3 id="what-you-need">2.1 What you need</h3>
+<ul>
+<li>MiKTeX, which provides pdflatex and xelatex. It is needed for PDF
+output and for every language except English.</li>
+<li>Pandoc, needed only for Word, OpenDocument, RTF, HTML, EPUB,
+Markdown and text output.</li>
+<li>For the add-on: NVDA 2025.1 or later.</li>
+</ul>
+<h3 id="installing-the-nvda-add-on">2.2 Installing the NVDA add-on</h3>
+<ol type="1">
+<li>Press Enter on the file latexBuilder-1.6.0.nvda-addon in File
+Explorer.</li>
+<li>Choose Yes when NVDA asks to install it, and restart NVDA.</li>
+</ol>
+<p>To update, install the newer file the same way. Settings, shortcuts
+and projects are kept.</p>
+<h3 id="installing-the-stand-alone-program">2.3 Installing the
+stand-alone program</h3>
+<p>Run the installer LaTeXBuilder-Setup-1.6.0.exe, or copy the program
+folder anywhere and run LaTeXBuilder.exe. Settings, shortcuts, logs and
+recovery copies are kept in the folder %APPDATA%. The stand-alone
+program speaks its extra messages through NVDA, JAWS or SAPI when the
+optional speech helper is present; menus and dialogs are read by any
+screen reader as usual.</p>
+<h2 id="opening-the-editor-and-the-two-most-useful-keys">3. Opening the
+editor and the two most useful keys</h2>
+<p>In NVDA press <strong>NVDA+Control+Shift+L</strong>, or open the NVDA
+menu, Tools, LaTeX Builder. The gesture can be changed in NVDA’s Input
+Gestures dialog, category LaTeX Builder. The stand-alone program simply
+opens its window.</p>
+<p>The title of the window shows the file name, whether it has unsaved
+changes, and the project name. To leave, press Alt+F4 or choose File,
+Exit editor.</p>
+<ul>
+<li><strong>Control+K</strong> opens the command list. Type part of any
+command name, such as footnote, bold or build, press Down arrow, and
+press Enter. You never need to remember a shortcut.</li>
+<li><strong>F1</strong> opens this manual in a window. Type in its
+search box to search the whole manual, press Down arrow to choose a
+section, and press Enter to read it.</li>
+</ul>
+<h2 id="the-editor-window">4. The editor window</h2>
+<p>The window has a menu bar (File, Edit, Insert, Navigate, View,
+Project, Build, Help) and one large text area. The Tab key inserts a tab
+character, so it never takes you out of your text. Long lines wrap onto
+the next line, so Up and Down arrow move one screen line at a time. You
+can switch wrapping off in the View menu.</p>
+<h3 id="working-with-several-documents">4.1 Working with several
+documents</h3>
+<ul>
+<li><strong>Control+PgDn</strong> and <strong>Control+PgUp</strong>:
+next and previous document. NVDA says the file name and position.</li>
+<li><strong>Control+Shift+W</strong>: list of open documents.</li>
+<li><strong>Control+N</strong> new, <strong>Control+O</strong> open,
+<strong>Control+S</strong> save, <strong>Control+Shift+S</strong> save
+as, <strong>Control+F2</strong> save all, <strong>Control+W</strong>
+close the document.</li>
+</ul>
+<p>Files are read as UTF-8, with a fallback for older Windows encodings,
+and always saved as UTF-8, which Kannada, Hindi and other
+Indian-language text needs.</p>
+<h3 id="finding-and-replacing">4.2 Finding and replacing</h3>
+<ul>
+<li><strong>Control+F</strong> find, <strong>F3</strong> next,
+<strong>Shift+F3</strong> previous. NVDA says Search wrapped when the
+search passes the end.</li>
+<li><strong>Control+H</strong> replace all. <strong>Control+G</strong>
+go to a line number.</li>
+</ul>
+<h2 id="inserting-latex-quickly">5. Inserting LaTeX quickly</h2>
+<p>All insert commands are in the Insert menu, grouped by purpose, and
+in the command list (Control+K).</p>
+<h3 id="how-every-insert-command-behaves">5.1 How every insert command
+behaves</h3>
+<ul>
+<li>With no text selected, the command inserts its code and puts the
+caret inside the braces, so you can type at once.</li>
+<li>With text selected, the command wraps the selection. Select the word
+Introduction on its own line, press Control+1, and it becomes a section
+heading.</li>
+<li>Blocks such as headings and lists always start on their own line,
+and no extra blank line is created.</li>
+<li>If a command needs a package, it is added to the preamble
+automatically and NVDA tells you.</li>
+<li>NVDA confirms each insertion. In View, Speech and sound options you
+can make confirmations short or switch them off.</li>
+</ul>
+<h3 id="headings-and-sub-headings">5.2 Headings and sub-headings</h3>
+<p>Chapter, section, subsection, subsubsection, paragraph and
+subparagraph headings, and unnumbered versions, are in Insert, Headings.
+The article class has no chapters; choose report or book in the project
+settings if you want chapters.</p>
+<h3 id="formatting-text">5.3 Formatting text</h3>
+<p>Bold, italic, underline, emphasis, monospace, small capitals, strike
+through, superscript and subscript text, text sizes, LaTeX quotation
+marks and line break are in Insert, Format text.</p>
+<h3 id="alignment">5.4 Alignment</h3>
+<p>Insert, Alignment has:</p>
+<ul>
+<li>Left aligned text, Centered text, Right aligned text and Justified
+text. They use the same keys as word processors:
+<strong>Control+L</strong>, <strong>Control+E</strong>,
+<strong>Control+R</strong> and <strong>Control+J</strong>.</li>
+<li>With text selected, the command wraps the selection in the
+alignment. With nothing selected, an empty block is inserted and the
+caret is placed inside.</li>
+<li>Left, centre and right align this paragraph only, which wrap just
+the paragraph without a block.</li>
+<li>Indent the next paragraph, and no indent for this paragraph.</li>
+</ul>
+<p>Justified text uses the ragged2e package, which is added
+automatically. Alignment also survives conversion to Word (section
+14).</p>
+<h3 id="lists-and-blocks">5.5 Lists and blocks</h3>
+<p>Bulleted list, numbered list, description list, new list item, quote,
+long quotation, verbatim (code) block and abstract are in Insert, Lists
+and blocks. Press <strong>Control+Shift+L</strong> at the end of a list
+line to add the next item.</p>
+<h3 id="footnotes-endnotes-and-margin-notes">5.6 Footnotes, endnotes and
+margin notes</h3>
+<ul>
+<li>Footnote: <strong>Control+Shift+F</strong>. The caret is placed
+inside the note; type its text.</li>
+<li>Endnote: <strong>Control+Shift+E</strong>. The endnotes package is
+added. In a project build the list of endnotes is printed at the end for
+you. In a single document use Insert, Notes, Print all endnotes
+here.</li>
+<li><strong>Footnote and endnote settings</strong> (Insert, Footnote and
+endnote settings) lets you decide how notes look and are numbered; see
+section 5.7.</li>
+</ul>
+<h3 id="footnote-and-endnote-settings">5.7 Footnote and endnote
+settings</h3>
+<p>The settings form is the same one used in Project settings (groups
+Footnotes and Endnotes). In a document with a preamble, the settings are
+added to the preamble. In a part file of a project they are saved in the
+project settings.</p>
+<p><strong>Footnotes</strong></p>
+<ul>
+<li><strong>Numbering:</strong> continue through the whole document,
+restart on every page, restart in every chapter (in an article, every
+section), or restart in every section.</li>
+<li><strong>Number style:</strong> 1 2 3, i ii iii, I II III, a b c, A B
+C, or symbols (an asterisk, dagger and so on; nine symbols, so best with
+restart on every page).</li>
+<li><strong>Text size:</strong> very small, small, medium small, same as
+the text, or large.</li>
+<li><strong>Font:</strong> any installed font for the notes, chosen from
+the list (this uses XeLaTeX automatically).</li>
+<li><strong>Layout:</strong> standard, hanging (later lines indented
+under the text), or flush with the margin.</li>
+<li><strong>Line above the notes</strong> on or off, notes always at the
+bottom of the page, and the space between notes.</li>
+</ul>
+<p><strong>Endnotes</strong></p>
+<ul>
+<li>Use endnotes for every footnote, so all notes go to the end.</li>
+<li>The heading above the endnotes, for example Notes or a heading in
+your own language.</li>
+<li>Text size, number style, and numbering (continue, restart in every
+chapter, or restart in every section).</li>
+<li>Whether the endnotes are printed automatically at the end of a
+project.</li>
+</ul>
+<h3 id="poems">5.8 Poems</h3>
+<p>Type or paste the poem as plain lines, with a blank line between
+stanzas. Select the lines and press <strong>Control+Shift+V</strong>.
+They are wrapped in a verse environment with the line breaks added. With
+nothing selected, an empty poem is inserted; press
+<strong>Shift+Enter</strong> at the end of each line.</p>
+<h3 id="headers-footers-and-page-numbers">5.9 Headers, footers and page
+numbers</h3>
+<p><strong>Control+Shift+H</strong> asks for the left, centre and right
+text of the header and of the footer, and whether to draw a line under
+the header. The footer centre is filled with , the page number. The code
+is added to the preamble.</p>
+<h3 id="title-contents-and-other-parts">5.10 Title, contents and other
+parts</h3>
+<p>Title page from a template (Control+7, section 5.12), table of
+contents (Control+5), new page (Control+6), comment line (Control+Q),
+list of figures and tables, appendix, vertical space, line spacing, and
+include another .tex file are in Insert, Document parts.</p>
+<h3 id="references-links-pictures-and-tables">5.11 References, links,
+pictures and tables</h3>
+<ul>
+<li>Label (Control+Shift+J), reference (Control+Shift+R), citation
+(Control+Shift+X), page reference and a manual bibliography list.</li>
+<li>Hyperlink (Control+Shift+K) asks for the address and the link
+text.</li>
+<li>Image (Control+Shift+G) opens a file chooser and asks for width,
+caption and label.</li>
+<li>Table (Control+Shift+A) asks for rows, columns, a bold header row,
+lines between cells and a caption. The caret is placed in the first
+cell; type an ampersand to move to the next cell.</li>
+</ul>
+<h3 id="title-pages-from-templates">5.12 Title pages from templates</h3>
+<p><strong>Insert, Title page from a template</strong> (Control+7) first
+asks for the title, author and date, then for the design. The designs
+are:</p>
+<ul>
+<li><strong>Standard:</strong> the usual title block at the top of the
+first page, with the text following on the same page.</li>
+<li><strong>Centered:</strong> a title page on its own page, with
+everything centered.</li>
+<li><strong>Book cover:</strong> the title between two rules, the
+author, and the publisher or place and year at the bottom.</li>
+<li><strong>Thesis or report:</strong> institution, department, title
+between rules, an extra lines area for the degree or supervisor, and the
+author.</li>
+<li><strong>Minimal:</strong> left aligned with a short rule.</li>
+<li><strong>Boxed:</strong> title, author and date inside a frame.</li>
+</ul>
+<p>You can add a subtitle, an institution or publisher, a department or
+series, extra lines (one per line) and a logo picture. The finished code
+is inserted at the caret. If a project is open you are asked whether to
+use the same design for the whole project. The same fields are in
+Project settings, group Title page design, and are used when the project
+is built. A title page is printed only when Print the title block is on
+in the group Title, author and class.</p>
+<h3 id="mathematics">5.13 Mathematics</h3>
+<p>Inline math (Control+Shift+M), display math (Control+Shift+D),
+numbered and aligned equations, fraction, square root, subscript and
+superscript. <strong>Symbols and Greek letters</strong>
+(Control+Shift+Y) opens a searchable list; the symbol is wrapped in
+dollar signs automatically when you are not already inside math.</p>
+<h3 id="choosing-values-from-lists">5.14 Choosing values from lists</h3>
+<p>Wherever a value is a number with a unit, such as a margin, a line
+spacing or a paragraph indent, the box is a list you can open with
+Alt+Down and choose from, or you can type your own value. Dates are
+chosen as Today’s date, No date, or A date I type. Header and footer
+positions offer Page number, Page x of y, Chapter or section name,
+Document title, Author and Date, or your own text. Buttons that choose a
+file, folder or installed font are placed directly after their text box,
+so press Tab once to reach them.</p>
+<h2 id="reading-and-navigating">6. Reading and navigating</h2>
+<ul>
+<li><strong>Alt+Down</strong> and <strong>Alt+Up</strong>: next and
+previous heading. NVDA says the type, number and title.</li>
+<li><strong>Alt+Shift+Down</strong> and <strong>Alt+Shift+Up</strong>:
+next and previous heading of the same or a higher level.</li>
+<li><strong>Control+Shift+O</strong>: list of all headings with a filter
+box.</li>
+<li><strong>F2</strong>: announces the line, the heading path and the
+environments you are inside.</li>
+<li><strong>F8</strong> and <strong>Shift+F8</strong>: next and previous
+footnote or endnote. <strong>F9</strong> and <strong>Shift+F9</strong>:
+next and previous environment.</li>
+<li>Next and previous math, and next and previous comment, are in the
+Navigate menu.</li>
+</ul>
+<h2 id="the-view-menu">7. The View menu</h2>
+<ul>
+<li>Increase text size (Alt+PgUp), decrease text size (Alt+PgDn), reset
+(Control+0).</li>
+<li>Toggle word wrap.</li>
+<li>Editor font and Colour theme: change only how the editor window
+looks. Themes include white, yellow or green on black and black on
+yellow or white.</li>
+<li>Speech and sound options: confirmations after insertion (full,
+short, none), tones during builds, and the Still building reminder.</li>
+<li>Document statistics (Control+F3): lines, words, characters, headings
+of each kind, footnotes and environments.</li>
+<li>Read selection or current section as plain text (Control+F8),
+current paragraph (Control+F9) and current line (Control+F7): spoken
+without LaTeX commands. Headings are announced and footnotes are read in
+brackets.</li>
+</ul>
+<h2 id="latex-packages-list-and-manager">8. LaTeX packages: list and
+manager</h2>
+<p>Press <strong>Control+Shift+U</strong>, or choose <strong>Insert,
+LaTeX packages</strong> or <strong>Build, LaTeX packages</strong>, to
+open the package list.</p>
+<h3 id="the-list">8.1 The list</h3>
+<p>The list shows 130 common packages, each with what it does, its
+group, whether it is installed, and whether your document or project
+uses it. A Show box chooses:</p>
+<ul>
+<li>Common LaTeX packages.</li>
+<li>Packages used in this document or project.</li>
+<li>Only installed packages, or only packages that are not
+installed.</li>
+<li>All MiKTeX packages (names only), when MiKTeX’s mpm tool is found.
+The first time can take a minute.</li>
+</ul>
+<p>Type in the filter box to narrow the list, and press Down arrow to
+move into it.</p>
+<h3 id="the-buttons">8.2 The buttons</h3>
+<ul>
+<li><strong>Add to document:</strong> adds a use package line to the
+preamble. If the file has no preamble (a part of a project), the line is
+added to the extra preamble of the project instead. NVDA says where it
+went, or that the package is already loaded.</li>
+<li><strong>Add with options:</strong> asks for options such as
+a4paper,margin=2cm.</li>
+<li><strong>Install:</strong> installs a package that is not installed.
+With MiKTeX this lets MiKTeX fetch whatever provides the package; in the
+All MiKTeX packages view it uses mpm. It runs in the background and NVDA
+announces the result.</li>
+<li><strong>Details:</strong> what the package does, its status, and the
+output of the last installation.</li>
+<li><strong>Update all packages:</strong> asks first, then updates every
+installed package. It needs an internet connection and can take several
+minutes.</li>
+<li><strong>Refresh status:</strong> checks again which packages are
+installed.</li>
+</ul>
+<p>MiKTeX also installs missing packages automatically the first time a
+build needs them, if that is allowed in Build, Settings. Installed
+status is found with MiKTeX’s kpsewhich tool. With TeX Live, install and
+update use tlmgr, which has had less testing.</p>
+<h2 id="projects-several-files-one-document">9. Projects: several files,
+one document</h2>
+<h3 id="creating-a-project">9.1 Creating a project</h3>
+<p>Project, New project opens one dialog for the project name, the
+folder where the project file is saved (type it, or choose Browse for
+folder) and whether to add the open saved documents. The project file
+has the extension .texproj. When you choose OK, the project file list
+opens.</p>
+<p>Other commands: Open project (Control+Shift+P), Open last project,
+Open the main file of the project, Save project, and Add this document
+to project (Control+F4). Changes are saved automatically.</p>
+<p><strong>What happens when you open a project.</strong> If no file is
+open yet (only the empty starting document), LaTeX Builder opens the
+main file of the project: the imported main file, or otherwise the first
+file in the project. If you already have files open, nothing is opened
+for you. You can choose in Build, Settings whether to open the main file
+or to open no file and leave the editor empty.</p>
+<h3 id="the-project-file-list">9.2 The project file list</h3>
+<p>Press <strong>F4</strong>. The list shows the files in the order they
+appear in the final document. Buttons: Add files, Add open documents,
+Remove (the file is not deleted), Move up, Move down, Open in editor,
+Settings, Build.</p>
+<h3 id="how-a-project-is-built">9.3 How a project is built</h3>
+<p>A build writes a main file and a copy of each part into a folder
+named build next to the project file. The main file has the preamble
+made from your settings, the title block, the optional table of
+contents, one command for each part and the end of the document. Your
+own files are never changed. Part files should contain only text and
+commands, not a \documentclass; if a file is a complete document, only
+its body is used.</p>
+<p>The finished file is saved next to the project file, named after the
+project.</p>
+<h3 id="project-settings">9.4 Project settings</h3>
+<p>Press <strong>Shift+F4</strong>. One window shows the groups of
+settings as buttons side by side. Press Tab to move between them, and
+Space or Enter to open one. A read-only box shows the current values of
+all groups. Choose Apply changes to keep everything; Cancel asks before
+discarding. The same window is used by File, New document from
+template.</p>
+<ul>
+<li><strong>Project name and building:</strong> name, LaTeX engine
+(auto, pdflatex, xelatex, lualatex), new page for each file, use a
+file’s own preamble, and for imported projects the two options in
+section 10.</li>
+<li><strong>Title, author and document class:</strong> article, report
+or book; title, author, date; title block; table of contents.</li>
+<li><strong>Title page design:</strong> the template, subtitle,
+institution, department, extra lines and logo (section 5.12).</li>
+<li><strong>Language and main font:</strong> language, font from the
+installed fonts, size 8 to 20 points, polyglossia, native digits.</li>
+<li><strong>Font fine tuning:</strong> scale, fake bold, fake italic,
+letter spacing, real bold and italic font names.</li>
+<li><strong>Sans and mono fonts.</strong></li>
+<li><strong>Page size and columns:</strong> A3 to A6, B4, B5, Letter,
+Legal, Executive or custom size; landscape; two-sided printing; one or
+two columns; column gap and line; and whether the geometry package
+controls page size and margins.</li>
+<li><strong>Margins:</strong> all sides, top, bottom, left or inner,
+right or outer, binding space, header and footer distance.</li>
+<li><strong>Spacing and page numbers:</strong> line spacing, paragraph
+indent and spacing, page number style, first page number.</li>
+<li><strong>Footnotes</strong> and <strong>Endnotes:</strong> numbering,
+style, size, font, layout and heading (section 5.7).</li>
+<li><strong>Packages and extras:</strong> math, images and links
+packages, the standard font packages for pdfLaTeX, and a box for extra
+preamble lines with a header and footer helper.</li>
+</ul>
+<h2 id="importing-a-project-made-in-another-editor">10. Importing a
+project made in another editor</h2>
+<p>Project, Import existing project from a main .tex file. Choose the
+main file (the one with \documentclass and \begin{document}, often
+main.tex) of a project made in TeXstudio, TeXworks, VS Code, Overleaf or
+any other editor. A dialog asks for a project name and an import mode.
+The project file is saved in the folder of the main file, and an import
+report opens.</p>
+<h3 id="what-is-read">10.1 What is read</h3>
+<ul>
+<li>Document class and options, font size, paper, two-sided, columns.
+Other classes such as memoir are kept as the original line.</li>
+<li>Page size and margins from geometry. Options the dialog cannot show
+are kept as the original lines.</li>
+<li>Fonts set with , and , including scale and fake bold and italic.
+Fonts with special options, such as a Path, are kept as they are.</li>
+<li>Language set with polyglossia, with native digits.</li>
+<li>Title, author, date, line spacing, paragraph indent and
+spacing.</li>
+<li>Packages amsmath, amssymb, graphicx and hyperref when loaded without
+options.</li>
+<li>Everything else in the preamble is kept word for word as extra
+preamble: footnote setup, custom commands, other packages, header and
+footer setup. Comments in the preamble are not imported.</li>
+<li>The engine, from a magic comment such as % !TEX program = xelatex,
+or from the packages used.</li>
+</ul>
+<h3 id="the-body-and-the-parts">10.2 The body and the parts</h3>
+The body of the main file is kept as the project layout. The title
+command, table of contents, appendix, bibliography commands and
+everything else stay where they are. The files named in ,
+and
+<p>become the project files in order. If you reorder the files, the
+parts change places. Extra files are added at the end. In Project
+settings, group Project name and building, you can turn the layout off
+to use the title block and contents settings instead.</p>
+<h3 id="the-two-modes">10.3 The two modes</h3>
+<ul>
+<li><strong>Convert (recommended):</strong> the settings become editable
+and builds are generated from them.</li>
+<li><strong>Keep the main file as it is:</strong> your original main
+file is compiled untouched; the project settings are not used. This is
+the safest for unusual projects. You can switch later in Project
+settings.</li>
+</ul>
+<h3 id="bibliographies-and-resources">10.4 Bibliographies and
+resources</h3>
+<p>BibTeX and biber bibliographies run automatically during a build, and
+the build then uses at least three passes. The folder of the main file
+is searched for pictures, .bib, .bst, .sty and .cls files.</p>
+<h2 id="indian-languages-and-fonts">11. Indian languages and fonts</h2>
+<p>Supported languages: English, Kannada, Hindi, Sanskrit, Marathi,
+Nepali, Konkani (Devanagari), Tamil, Telugu, Malayalam, Bengali,
+Assamese, Gujarati, Punjabi (Gurmukhi), Odia and Urdu (right to left,
+experimental). Type text directly with your normal Windows keyboard.</p>
+<p>Any language other than English is built with XeLaTeX and fontspec
+with the correct script. The default font is Nirmala UI, which comes
+with Windows. In Language and main font choose Choose font from
+installed fonts to see every font on the computer; fonts suggested for
+the script come first.</p>
+<ul>
+<li><strong>Use polyglossia</strong> adds language-specific hyphenation
+and translated words such as Chapter and Contents. It is not available
+for Konkani and Odia.</li>
+<li><strong>Print native digits</strong> prints numbers in the digits of
+the language where supported.</li>
+<li>If a font has no bold or italic, use fake bold and fake italic in
+Font fine tuning.</li>
+</ul>
+<p>A recipe for a Kannada book: create a project, choose book, choose
+Kannada, pick a font, set font size 12 or 14, set the margins, apply,
+and build with F5. Odia and Urdu have had less testing.</p>
+<h2 id="building">12. Building</h2>
+<h3 id="the-build-dialog">12.1 The build dialog</h3>
+<p>Press <strong>F5</strong>. Choose the output format (PDF, Word .docx,
+.odt, .rtf, .html, .epub, .md, .txt), the current document or the whole
+project, the engine (PDF only), and whether to open the result.
+<strong>F6</strong> builds again with the last choices,
+<strong>Control+F5</strong> opens the last result, <strong>F7</strong>
+shows errors and warnings, <strong>Shift+F7</strong> shows the full
+log.</p>
+<h3 id="during-a-build">12.2 During a build</h3>
+<p>Modified documents are saved first. The build runs in the background.
+A short beep starts it, a high beep means success and a low beep means
+failure; NVDA says Still building every 15 seconds. LaTeX runs twice so
+that contents and references are right, and bibliography tools run when
+needed.</p>
+<h3 id="where-files-go">12.3 Where files go</h3>
+<p>For a project, the output is next to the project file and working
+files are in the folder build. For a single document, the PDF is next to
+the .tex file and working files are in the folder _latexbuild. A file
+without \documentclass is built with a default preamble.</p>
+<h3 id="when-a-build-fails">12.4 When a build fails</h3>
+<p>NVDA says how many errors occurred and reads the first one. A list
+opens with each problem, its file and line. Press Enter on an item to
+open the right file at that line, even in a project. The Show full log
+button shows the whole output. Typical messages: Undefined control
+sequence means a misspelled command or a missing package; Missing $
+inserted means math used outside math; File not found means a wrong
+path.</p>
+<h2 id="word-and-other-formats-through-pandoc">13. Word and other
+formats through Pandoc</h2>
+<p>Pandoc reads your LaTeX and converts the content. Version 1.4
+improves this in several ways:</p>
+<ul>
+<li><strong>Citations and bibliography.</strong> Pandoc does not read
+\bibliography by itself. LaTeX Builder finds the .bib files named by
+\bibliography or \addbibresource, and when the document has citations it
+lets Pandoc format them, so citations and the list of references appear
+in the Word file. Natbib and biblatex commands are supported. A notice
+tells you which .bib files were used, or that none was found. In Build,
+Settings you can choose a citation style file (.csl) and the heading
+above the references.</li>
+<li><strong>Alignment.</strong> Centered, left, right and justified
+blocks become real alignment in Word (and in HTML).</li>
+<li><strong>Fonts and language.</strong> For projects, the Word file
+uses the project’s main font and size, and the language of the text, so
+Kannada, Hindi and other scripts show in the right font and spelling
+language. If you choose a Word template in Settings, its styles are used
+instead.</li>
+<li><strong>Endnotes</strong> become footnotes in Word.</li>
+<li><strong>Heading numbers</strong> follow LaTeX numbering in Word,
+ODT, HTML and EPUB; you can switch this off in Settings.</li>
+<li><strong>HTML</strong> is made as one self-contained file, with
+mathematics in MathML.</li>
+</ul>
+<p>Word output cannot copy LaTeX page layout, margins, headers and
+footers. Use PDF when exact layout matters.</p>
+<h2 id="crash-recovery">14. Crash recovery</h2>
+<p>Unsaved text is copied to a recovery folder every 15 seconds (change
+it in Build, Settings; 0 switches it off). If the program or NVDA
+crashes or is closed with unsaved work, the next time you open LaTeX
+Builder it offers to recover those documents. Recovered documents are
+marked as modified with their original names; save them to keep the
+changes. Saving or closing a document removes its copy.</p>
+<h2 id="settings">15. Settings</h2>
+<p>Build, Settings (Shift+F5):</p>
+<ul>
+<li>The folder of the MiKTeX programs and the path of pandoc.exe, if
+they are not found automatically.</li>
+<li>Number of LaTeX passes, and automatic installation of missing MiKTeX
+packages.</li>
+<li>What to do when a project is opened with no file open.</li>
+<li>The citation style file, the heading for references, a Word
+template, and numbering of headings for Pandoc output.</li>
+<li>The safety copy interval.</li>
+</ul>
+<h2 id="customizing-keyboard-shortcuts">16. Customizing keyboard
+shortcuts</h2>
+<p>Help, Customize keyboard shortcuts (Control+F1). Type part of a
+command name in the filter box, press Down arrow, and press Enter on a
+command or use the Change shortcut button. Type the new shortcut, such
+as Ctrl+Shift+X, Alt+Down or F7. If it is used by another command you
+are asked whether to move it. A shortcut must include Ctrl or Alt, or be
+a function key. Ctrl+C, Ctrl+X, Ctrl+V and Ctrl+A are reserved. Remove,
+Reset this command and Reset all to defaults are also available. Choices
+are kept when you update.</p>
+<h2 id="logs-and-getting-help">17. Logs and getting help</h2>
+<p>The Help menu has View add-on log (Shift+F1) with system information
+and the latest events, newest at the end; Copy add-on log to the
+clipboard, to paste into a message; View NVDA log entries about LaTeX
+Builder; Open the folder with the log files; and Clear add-on log. After
+a freeze, restart and read the last lines: they show the last command or
+dialog opened. When an error happens inside a command, you hear a
+message pointing you to the log.</p>
+<h2 id="troubleshooting">18. Troubleshooting</h2>
+<p><strong>MiKTeX or Pandoc cannot be found.</strong> Install them, or
+enter their locations in Build, Settings. If you installed them while
+the program was running, restart it.</p>
+<p><strong>The build waits a long time.</strong> MiKTeX may be
+downloading a package. Make sure automatic installation is on and you
+are online. A build is stopped after ten minutes.</p>
+<p><strong>The font cannot be found.</strong> Choose a font that exists
+with Choose font from installed fonts, or clear the box.</p>
+<p><strong>Indian-language text prints as boxes.</strong> The font does
+not contain that script. Choose a font suggested for the language.
+Nirmala UI covers most scripts.</p>
+<p><strong>The PDF does not open.</strong> Close it in your viewer
+before building again; some viewers lock the file.</p>
+<p><strong>Citations show as keys in Word.</strong> The .bib file was
+not found. Check that it is in the folder of the project or main file,
+and read the notice after the build.</p>
+<p><strong>F1 shows an error.</strong> This was a fault in version 1.4
+and is fixed in 1.5. If it happens again, read the end of the log (Help,
+View add-on log) and send it.</p>
+<p><strong>Something freezes.</strong> Restart, then open Help, View
+add-on log and read the last lines.</p>
+<p><strong>The add-on is rejected after an NVDA update.</strong> Install
+the newest version of the add-on.</p>
+<h2 id="limits-of-this-version">19. Limits of this version</h2>
+<ul>
+<li>The interface and messages are in English.</li>
+<li>There is no live PDF preview; build, then open the result.</li>
+<li>There is no spell checking in the editor.</li>
+<li>Word output is a conversion by Pandoc and does not copy the PDF
+layout.</li>
+<li>Odia and Urdu have had less testing than other languages.</li>
+<li>The package manager has been tested mainly with MiKTeX; TeX Live
+support is basic.</li>
+<li>Parts of the window and dialogs have had limited testing in every
+setup. Please report anything that does not behave as this manual
+describes, together with the log.</li>
+</ul>
+<h2 id="keyboard-shortcut-reference">20. Keyboard shortcut
+reference</h2>
+<h3 id="file">File</h3>
+<ul>
+<li>New empty document: Ctrl+N</li>
+<li>New document from template…: no default shortcut</li>
+<li>Open…: Ctrl+O</li>
+<li>Save: Ctrl+S</li>
+<li>Save as…: Ctrl+Shift+S</li>
+<li>Save all documents: Ctrl+F2</li>
+<li>Close document: Ctrl+W</li>
+<li>Next document: Ctrl+PgDn</li>
+<li>Previous document: Ctrl+PgUp</li>
+<li>Open documents list…: Ctrl+Shift+W</li>
+<li>Exit editor: no default shortcut</li>
+</ul>
+<h3 id="edit">Edit</h3>
+<ul>
+<li>Undo: Ctrl+Z</li>
+<li>Redo: Ctrl+Y</li>
+<li>Find…: Ctrl+F</li>
+<li>Find next: F3</li>
+<li>Find previous: Shift+F3</li>
+<li>Replace all…: Ctrl+H</li>
+<li>Go to line…: Ctrl+G</li>
+<li>Command list…: Ctrl+K</li>
+</ul>
+<h3 id="insert-headings">Insert Headings</h3>
+<ul>
+<li>Part: no default shortcut</li>
+<li>Chapter: Ctrl+Shift+1</li>
+<li>Section (heading): Ctrl+1</li>
+<li>Subsection (sub-heading): Ctrl+2</li>
+<li>Subsubsection (sub-sub-heading): Ctrl+3</li>
+<li>Paragraph heading: Ctrl+4</li>
+<li>Subparagraph heading: no default shortcut</li>
+<li>Chapter without number: no default shortcut</li>
+<li>Section without number: no default shortcut</li>
+<li>Subsection without number: no default shortcut</li>
+<li>Subsubsection without number: no default shortcut</li>
+</ul>
+<h3 id="insert-format-text">Insert Format text</h3>
+<ul>
+<li>Bold: Ctrl+B</li>
+<li>Italic: Ctrl+I</li>
+<li>Underline: Ctrl+U</li>
+<li>Emphasis: Ctrl+Shift+I</li>
+<li>Monospace (typewriter): Ctrl+Shift+T</li>
+<li>Small capitals: no default shortcut</li>
+<li>Strike through: no default shortcut</li>
+<li>Superscript (text): no default shortcut</li>
+<li>Subscript (text): no default shortcut</li>
+<li>Smaller text: no default shortcut</li>
+<li>Larger text: no default shortcut</li>
+<li>Large text: no default shortcut</li>
+<li>Huge text: no default shortcut</li>
+<li>Quotation marks (LaTeX style): no default shortcut</li>
+<li>Line break: Shift+Enter</li>
+</ul>
+<h3 id="insert-alignment">Insert Alignment</h3>
+<ul>
+<li>Left aligned text: Ctrl+L</li>
+<li>Centered text: Ctrl+E</li>
+<li>Right aligned text: Ctrl+R</li>
+<li>Justified text: Ctrl+J</li>
+<li>Left align this paragraph only: no default shortcut</li>
+<li>Centre this paragraph only: no default shortcut</li>
+<li>Right align this paragraph only: no default shortcut</li>
+<li>Indent the next paragraph: no default shortcut</li>
+<li>No indent for this paragraph: no default shortcut</li>
+</ul>
+<h3 id="insert-lists-and-blocks">Insert Lists and blocks</h3>
+<ul>
+<li>Bulleted list: Ctrl+Shift+B</li>
+<li>Numbered list: Ctrl+Shift+N</li>
+<li>Description list: no default shortcut</li>
+<li>New list item: Ctrl+Shift+L</li>
+<li>Quote block: Ctrl+Shift+Q</li>
+<li>Long quotation block: no default shortcut</li>
+<li>Verbatim (code) block: no default shortcut</li>
+<li>Abstract: no default shortcut</li>
+</ul>
+<h3 id="insert-notes-poems-headers">Insert Notes, poems, headers</h3>
+<ul>
+<li>Footnote: Ctrl+Shift+F</li>
+<li>Endnote: Ctrl+Shift+E</li>
+<li>Print all endnotes here: no default shortcut</li>
+<li>Margin note: no default shortcut</li>
+<li>Poem (selected lines become verse): Ctrl+Shift+V</li>
+<li>Header and footer…: Ctrl+Shift+H</li>
+<li>Footnote and endnote settings…: no default shortcut</li>
+<li>Current page number: no default shortcut</li>
+</ul>
+<h3 id="insert-document-parts">Insert Document parts</h3>
+<ul>
+<li>Title page from a template…: Ctrl+7</li>
+<li>Table of contents: Ctrl+5</li>
+<li>List of figures: no default shortcut</li>
+<li>List of tables: no default shortcut</li>
+<li>New page: Ctrl+6</li>
+<li>Clear page (flush floats): no default shortcut</li>
+<li>Start appendices: no default shortcut</li>
+<li>Vertical space: no default shortcut</li>
+<li>Fill horizontal space: no default shortcut</li>
+<li>Line spacing: no default shortcut</li>
+<li>Comment line (not printed): Ctrl+Q</li>
+<li>LaTeX packages…: Ctrl+Shift+U</li>
+<li>Include another .tex file…: no default shortcut</li>
+<li>New document skeleton…: no default shortcut</li>
+</ul>
+<h3 id="insert-references-links-images-tables">Insert References, links,
+images, tables</h3>
+<ul>
+<li>Label: Ctrl+Shift+J</li>
+<li>Reference to label: Ctrl+Shift+R</li>
+<li>Page reference: no default shortcut</li>
+<li>Citation: Ctrl+Shift+X</li>
+<li>Bibliography (manual list): no default shortcut</li>
+<li>Hyperlink…: Ctrl+Shift+K</li>
+<li>Image (picture file)…: Ctrl+Shift+G</li>
+<li>Table…: Ctrl+Shift+A</li>
+</ul>
+<h3 id="insert-math">Insert Math</h3>
+<ul>
+<li>Inline math: Ctrl+Shift+M</li>
+<li>Display math: Ctrl+Shift+D</li>
+<li>Numbered equation: no default shortcut</li>
+<li>Aligned equations: no default shortcut</li>
+<li>Fraction: no default shortcut</li>
+<li>Square root: no default shortcut</li>
+<li>Subscript: no default shortcut</li>
+<li>Superscript (power): no default shortcut</li>
+<li>Symbols and Greek letters…: Ctrl+Shift+Y</li>
+</ul>
+<h3 id="insert">Insert</h3>
+<ul>
+<li>LaTeX packages…: no default shortcut</li>
+<li>Title page from a template…: no default shortcut</li>
+<li>Footnote and endnote settings…: no default shortcut</li>
+</ul>
+<h3 id="navigate">Navigate</h3>
+<ul>
+<li>Next heading: Alt+Down</li>
+<li>Previous heading: Alt+Up</li>
+<li>Next heading, same or higher level: Alt+Shift+Down</li>
+<li>Previous heading, same or higher level: Alt+Shift+Up</li>
+<li>Document structure list…: Ctrl+Shift+O</li>
+<li>Announce where I am: F2</li>
+<li>Next footnote or endnote: F8</li>
+<li>Previous footnote or endnote: Shift+F8</li>
+<li>Next environment: F9</li>
+<li>Previous environment: Shift+F9</li>
+<li>Next math: no default shortcut</li>
+<li>Previous math: no default shortcut</li>
+<li>Next comment: no default shortcut</li>
+<li>Previous comment: no default shortcut</li>
+</ul>
+<h3 id="view">View</h3>
+<ul>
+<li>Increase text size: Alt+PgUp</li>
+<li>Decrease text size: Alt+PgDn</li>
+<li>Reset text size: Ctrl+0</li>
+<li>Toggle word wrap: no default shortcut</li>
+<li>Editor font…: no default shortcut</li>
+<li>Colour theme…: no default shortcut</li>
+<li>Speech and sound options…: no default shortcut</li>
+<li>Document statistics: Ctrl+F3</li>
+<li>Read selection or section as plain text: Ctrl+F8</li>
+<li>Read paragraph as plain text: Ctrl+F9</li>
+<li>Read line as plain text: Ctrl+F7</li>
+</ul>
+<h3 id="project">Project</h3>
+<ul>
+<li>New project…: no default shortcut</li>
+<li>Open project…: Ctrl+Shift+P</li>
+<li>Open last project: no default shortcut</li>
+<li>Import project from main .tex file…: no default shortcut</li>
+<li>Project files…: F4</li>
+<li>Open project main file: no default shortcut</li>
+<li>Project settings…: Shift+F4</li>
+<li>Add this document to project: Ctrl+F4</li>
+<li>Save project: no default shortcut</li>
+</ul>
+<h3 id="build">Build</h3>
+<ul>
+<li>Build document…: F5</li>
+<li>Build again: F6</li>
+<li>Show errors and warnings: F7</li>
+<li>View full build log: Shift+F7</li>
+<li>Open last result: Ctrl+F5</li>
+<li>LaTeX packages…: no default shortcut</li>
+<li>Settings…: Shift+F5</li>
+</ul>
+<h3 id="help">Help</h3>
+<ul>
+<li>User manual: F1</li>
+<li>User manual in web browser: no default shortcut</li>
+<li>Keyboard shortcuts list: Ctrl+Shift+F1</li>
+<li>Customize keyboard shortcuts…: Ctrl+F1</li>
+<li>View add-on log…: Shift+F1</li>
+<li>Copy add-on log: no default shortcut</li>
+<li>View NVDA log entries…: no default shortcut</li>
+<li>Open log folder: no default shortcut</li>
+<li>Clear add-on log: no default shortcut</li>
+<li>About: no default shortcut</li>
+</ul>
+<h2 id="quick-start-card">21. Quick start card</h2>
+<ul>
+<li>Open: NVDA+Control+Shift+L. Find any command: Control+K. This
+manual: F1.</li>
+<li>Heading: Control+1 (select the text first). Bold, italic: Control+B,
+Control+I.</li>
+<li>Align: Control+L, Control+E, Control+R, Control+J.</li>
+<li>Footnote, endnote: Control+Shift+F, Control+Shift+E. Poem: select
+the lines, Control+Shift+V.</li>
+<li>Packages: Control+Shift+U.</li>
+<li>Move by heading: Alt+Down, Alt+Up.</li>
+<li>Project files: F4. Project settings: Shift+F4. Build: F5. Errors:
+F7.</li>
+</ul>
+</body>
+</html>
