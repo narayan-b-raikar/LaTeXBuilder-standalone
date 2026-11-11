@@ -1,0 +1,3 @@
+wxPython>=4.2
+# optional: speaks through JAWS, NVDA, SAPI and others
+accessible-output2
